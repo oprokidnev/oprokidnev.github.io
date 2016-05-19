@@ -1,1 +1,47 @@
-Hello World
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['timeline']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var container = document.getElementById('timeline');
+        var chart = new google.visualization.Timeline(container);
+        var dataTable = new google.visualization.DataTable();
+
+        dataTable.addColumn({ type: 'string', id: 'Name' });
+        dataTable.addColumn({ type: 'string', id: 'Experiense' });
+        dataTable.addColumn({ type: 'string', id: 'Full description', role: 'tooltip' });
+        dataTable.addColumn({ type: 'date', id: 'Start' });
+        dataTable.addColumn({ type: 'date', id: 'End' });
+        dataTable.addRows([
+          [ 'Andrey Oprokidnev', 'First site project in school competition', 'Website written in php and javascript. Inline content editable concept was used to show usability advantages', 
+              new Date(2006, 1, 1), new Date(2006, 5, 1) ],
+          [ 'Andrey Oprokidnev', 'First job project', 'Internet agency portals support job', 
+              new Date(2008, 1, 1), new Date(2009, 1, 1) ],
+          [ 'Andrey Oprokidnev', 'Some startup projects during university studies', 'Cinema e-ticket shop. Self-written platforms and API integration.', 
+              new Date(2009, 1, 1), new Date(2012, 1, 1) ],
+          [ 'Andrey Oprokidnev', 'Middle fullstack developer position', 'Symfony2-ExtJS projects for commercial structures.', 
+              new Date(2012, 1, 1), new Date(2013, 1, 1) ],
+          // [ 'Andrey Oprokidnev', 'First job project: organization portals support', new Date(2008, 1, 1), new Date(2009, 1, 1) ],
+          // [ 'Adams',      new Date(1797, 2, 4),  new Date(1801, 2, 4) ],
+          // [ 'Jefferson',  new Date(1801, 2, 4),  new Date(1809, 2, 4) ]
+          ]
+          );
+        var options = {
+           groupByRowLabel: false,
+           height: 900,
+        };
+        
+
+        chart.draw(dataTable, options);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Career</h1>
+    <div id="timeline" style="height: 400px;"></div>
+    <h1>Latest projects</h1>
+    <div id="timeline-latest" style="height: 300px;"></div>
+  </body>
+</html>
